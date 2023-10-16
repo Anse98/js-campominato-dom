@@ -83,7 +83,6 @@ function addBgAndN () {
 
   // Vado a prendermi tutti gli elementi dal DOM con classe cell
   const cellElements = document.querySelectorAll(".cell");
-  console.log(cellElements.length);
 
   for (let i = 0; i < cellElements.length; i++) {
     const n = i + 1;
@@ -95,6 +94,31 @@ function addBgAndN () {
       console.log(n);
     })
   }
+}
+
+// FUNZIONE CHE MI GENERA UN NUMERO CASUALE DA 1 A 100
+
+function getRandomInt(min, max) {
+  min = Math.ceil(1);
+  max = Math.floor(100);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+// FUNZIONE CHE MI GENERA LE 16 BOMBE
+
+function generateBombs() {
+  // Genero un array che conterrà le mie 16 bombe
+const bombs = [];
+
+// Inserisco nell'array tutti i 16 numeri diversi uno dall'altro
+while (bombs.length < 16 === true) {
+
+  n = getRandomInt();
+  if (bombs.includes(n) === false) {
+    bombs.push(n);
+  }
+}
+console.log(bombs);
 }
 
   /////////////////////////////FINE FUNZIONI////////////////////////////////////
@@ -112,5 +136,9 @@ function addBgAndN () {
     generateGrill();
 
     addBgAndN ();
+
+    generateBombs();
     
   })
+
+  
