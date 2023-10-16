@@ -93,3 +93,11 @@ header button {
 .bg-azure {
   background-color: #86B3C4;
 }
+
+.bg-red {
+  background-color: red;
+}
+
+.match-ended {
+  pointer-events: none;
+}

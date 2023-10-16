@@ -13,6 +13,9 @@ function generateGrill() {
   // Cancello la griglia ogni volta che viene premuto il tasto gioca
   gridElement.innerHTML = "";
 
+  // Rimuovo la classe che non permetteva di cliccare altre caselle all'utente
+  gridElement.classList.remove("match-ended");
+
   if (selectElement.value === "hard") {
 
     // Mi genera 49 caselle se la select è impostata su facile
@@ -66,9 +69,9 @@ function generateBombs() {
 
     let nBomb;
     // In base al livello di difficoltà i numeri delle bombe generate variano
-    if (selectElement.value === "f") {
+    if (selectElement.value === "easy") {
       nBomb = getRandomInt(1, 100);
-    } else if (selectElement.value === "m") {
+    } else if (selectElement.value === "medium") {
       nBomb = getRandomInt(1, 81);
     } else {
       nBomb = getRandomInt(1, 49);
@@ -80,7 +83,6 @@ function generateBombs() {
     }
   }
   console.log(bombs);
-
 }
 
 /////////////////////////////FINE FUNZIONI////////////////////////////////////
@@ -95,7 +97,14 @@ const playBtnElement = document.getElementById("play-btn");
 // Mi vado a prendere la select dal DOM
 const selectElement = document.getElementById("difficulty");
 
+// Mi vado a prendere tutti gli elementi con la classe cell dal DOM
+const cellElements = document.querySelectorAll(".cell");
+
+let cellsAzure = document.querySelectorAll(".bg-azure");
+
+//Creo l'array vuoto delle bombe
 let bombs = [];
+
 
 // Creiamo un evento al click del button
 playBtnElement.addEventListener("click", function () {
@@ -106,9 +115,43 @@ playBtnElement.addEventListener("click", function () {
 
 });
 
+
 // Creo un evento al click della griglia (e caselle)
 gridElement.addEventListener('click', function (event) {
+
   const target = event.target;
   const targetNumber = parseInt(target.innerHTML);
-  console.log(targetNumber);
+
+  // SE la casella cliccata ha un numero che è contenuto in bombs allora hai perso
+  if(bombs.includes(targetNumber)) {
+
+    // la cella si colora di rosso 
+    target.classList.add("bg-red");
+  
+    //Stampo che hai perso
+    console.log("Hai perso, hai pestato la bomba!");
+
+    // aggiungo una classe che evita che l'utente possa cliccare su altre caselle dopo che ha perso
+    // gridElement.classList.add("match-ended");
+
+  } else {
+
+    //la cella si colora di azzurro
+    target.classList.add("bg-azure");
+    
+  }
+
+  
+  
+
+  
+
+  // if (selectElement.value === "hard") {
+  //   if(cellsAzure.length === gridElement.length - 16){
+  //     console.log("hai vinto")
+  //   }
+
+  //   console.log(cellsAzure.length, gridElement.length)
+  // }
+
 });
