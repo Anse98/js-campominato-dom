@@ -99,8 +99,8 @@ function addBgAndN () {
 // FUNZIONE CHE MI GENERA UN NUMERO CASUALE DA 1 A 100
 
 function getRandomInt(min, max) {
-  min = Math.ceil(1);
-  max = Math.floor(100);
+  min = Math.ceil(min);
+  max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min);
 }
 
@@ -113,7 +113,8 @@ const bombs = [];
 // Inserisco nell'array tutti i 16 numeri diversi uno dall'altro
 while (bombs.length < 16 === true) {
 
-  n = getRandomInt();
+  n = getRandomInt(1,100);
+
   if (bombs.includes(n) === false) {
     bombs.push(n);
   }
