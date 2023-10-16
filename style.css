@@ -1,0 +1,95 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color:#253F60;
+  color: white;
+  font-family: Verdana, Tahoma, sans-serif;
+}
+
+img {
+  width: 100%;
+}
+
+header {
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header figure {
+  width: 200px;
+}
+
+header .title {
+  margin-bottom: 20px;
+}
+
+header button,
+header select {
+  cursor: pointer;
+  margin-right: 26px;
+  background-color: #86B3C4;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+}
+
+header select {
+  padding: 6px;
+}
+
+header button {
+  padding: 7px;
+}
+
+#play-btn i{
+  margin-left: 6px;
+}
+
+.container-fluid {
+  max-width: 100%;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border: solid 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell-easy {
+  width:calc(100% / 10);
+}
+
+.cell-medium {
+  width:calc(100% / 9);
+}
+
+.cell-difficult {
+  width:calc(100% / 7);
+}
+
+.bg-azure {
+  background-color: #86B3C4;
+}
