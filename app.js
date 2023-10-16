@@ -14,7 +14,9 @@ function generateGrill() {
   gridElement.innerHTML = "";
 
   // Rimuovo la classe che non permetteva di cliccare altre caselle all'utente
-  gridElement.classList.remove("match-ended");
+  gridElement.classList.remove("game-over");
+
+  counter = 0;
 
   if (selectElement.value === "hard") {
 
@@ -100,7 +102,8 @@ const selectElement = document.getElementById("difficulty");
 // Mi vado a prendere tutti gli elementi con la classe cell dal DOM
 const cellElements = document.querySelectorAll(".cell");
 
-let cellsAzure = document.querySelectorAll(".bg-azure");
+//Mi creo una variabile contatore
+let counter = 0;
 
 //Creo l'array vuoto delle bombe
 let bombs = [];
@@ -124,7 +127,6 @@ gridElement.addEventListener('click', function (event) {
 
   // SE la casella cliccata ha un numero che è contenuto in bombs allora hai perso
   if(bombs.includes(targetNumber)) {
-
     // la cella si colora di rosso 
     target.classList.add("bg-red");
   
@@ -132,26 +134,30 @@ gridElement.addEventListener('click', function (event) {
     console.log("Hai perso, hai pestato la bomba!");
 
     // aggiungo una classe che evita che l'utente possa cliccare su altre caselle dopo che ha perso
-    // gridElement.classList.add("match-ended");
+    gridElement.classList.add("game-over");
 
   } else {
-
     //la cella si colora di azzurro
     target.classList.add("bg-azure");
-    
+
+    counter++;
+
+    if(selectElement.value === "hard" && counter === 33) {
+
+      console.log("hai vinto!");
+
+    } else if (selectElement.value === "medium" && counter === 65) {
+
+      console.log("hai vinto!");
+
+    } else if (counter === 84) {
+
+      console.log("hai vinto!");
+
+    }
+
+    console.log(counter);
   }
 
   
-  
-
-  
-
-  // if (selectElement.value === "hard") {
-  //   if(cellsAzure.length === gridElement.length - 16){
-  //     console.log("hai vinto")
-  //   }
-
-  //   console.log(cellsAzure.length, gridElement.length)
-  // }
-
 });
