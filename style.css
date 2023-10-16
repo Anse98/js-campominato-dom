@@ -98,6 +98,6 @@ header button {
   background-color: red;
 }
 
-.game-over {
+.match-ended {
   pointer-events: none;
 }

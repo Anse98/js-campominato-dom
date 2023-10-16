@@ -14,7 +14,7 @@ function generateGrill() {
   gridElement.innerHTML = "";
 
   // Rimuovo la classe che non permetteva di cliccare altre caselle all'utente
-  gridElement.classList.remove("game-over");
+  gridElement.classList.remove("match-ended");
 
   counter = 0;
 
@@ -126,15 +126,15 @@ gridElement.addEventListener('click', function (event) {
   const targetNumber = parseInt(target.innerHTML);
 
   // SE la casella cliccata ha un numero che è contenuto in bombs allora hai perso
-  if(bombs.includes(targetNumber)) {
+  if (bombs.includes(targetNumber)) {
     // la cella si colora di rosso 
     target.classList.add("bg-red");
-  
+
     //Stampo che hai perso
     console.log("Hai perso, hai pestato la bomba!");
 
     // aggiungo una classe che evita che l'utente possa cliccare su altre caselle dopo che ha perso
-    gridElement.classList.add("game-over");
+    gridElement.classList.add("match-ended");
 
   } else {
     //la cella si colora di azzurro
@@ -142,22 +142,29 @@ gridElement.addEventListener('click', function (event) {
 
     counter++;
 
-    if(selectElement.value === "hard" && counter === 33) {
+    if (selectElement.value === "hard" && counter === 33) {
 
       console.log("hai vinto!");
+      gridElement.classList.add("match-ended");
 
     } else if (selectElement.value === "medium" && counter === 65) {
 
       console.log("hai vinto!");
+      gridElement.classList.add("match-ended");
 
     } else if (counter === 84) {
 
       console.log("hai vinto!");
+      gridElement.classList.add("match-ended");
 
     }
-
-    console.log(counter);
   }
 
-  
+  if (gridElement.classList.contains("match-ended")) {
+
+    console.log(`Hai totalizzato ${counter} punti`);
+
+  }
+
+
 });
