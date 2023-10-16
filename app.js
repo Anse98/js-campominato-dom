@@ -134,14 +134,20 @@ gridElement.addEventListener('click', function (event) {
     console.log("Hai perso, hai pestato la bomba!");
 
     // aggiungo una classe che evita che l'utente possa cliccare su altre caselle dopo che ha perso
-    gridElement.classList.add("match-ended");
+    // gridElement.classList.add("match-ended");
 
   } else {
-    //la cella si colora di azzurro
-    target.classList.add("bg-azure");
 
-    counter++;
+    if (target.classList.contains("bg-azure") === false) {
 
+      // Il contatore incrementa di uno a ogni click e viene aggiunta la classe bg-azure alla cella
+      counter++;
+
+      target.classList.add("bg-azure");
+
+    }
+    console.log(counter)
+    // in base al valore della select il match finisce
     if (selectElement.value === "hard" && counter === 33) {
 
       console.log("hai vinto!");
@@ -160,6 +166,8 @@ gridElement.addEventListener('click', function (event) {
     }
   }
 
+
+  // Messaggio finale di quanti punti hai totalizzato
   if (gridElement.classList.contains("match-ended")) {
 
     console.log(`Hai totalizzato ${counter} punti`);
